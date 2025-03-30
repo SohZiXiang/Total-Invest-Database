@@ -1,7 +1,11 @@
-SELECT i.Phone, i.Name, AVG(pr.AnnualizedReturn) as AvgReturn
-FROM INVESTOR i
-JOIN PORTFOLIO p ON i.Phone = p.Phone
-JOIN PORTFOLIO_RETURNS pr ON p.InceptionDate = pr.InceptionDate AND p.MarketValue = pr.MarketValue
-WHERE YEAR(pr.InceptionDate) = 2024
-GROUP BY i.Phone, i.Name
+DECLARE @Year int;
+SET @Year = 2024;
+
+SELECT I.Phone, I.Name, AVG(PR.AnnualizedReturn) as AvgReturn
+FROM INVESTOR I, PORTFOLIO P, PORTFOLIO_RETURNS PR
+WHERE I.Phone = P.Phone AND
+      P.InceptionDate = PR.InceptionDate AND
+      P.MarketValue = PR.MarketValue AND
+      YEAR(pr.InceptionDate) = @Year
+GROUP BY I.Phone, I.Name
 HAVING AVG(pr.AnnualizedReturn) > 10;
