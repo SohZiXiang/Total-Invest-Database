@@ -7,6 +7,7 @@ DECLARE @Year INT;
 SET @Year = 2024;
 
 SELECT
+    @Year AS Year,
     i.Gender,
     SUM(pr.AnnualizedReturn) AS TotalReturn,
     COUNT(DISTINCT i.Phone) AS InvestorCount

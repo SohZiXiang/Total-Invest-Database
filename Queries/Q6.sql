@@ -7,25 +7,27 @@ WITH GoalCounts AS (
         I.Company,
         FG.Goal,
         COUNT(DISTINCT FG.Phone) AS GoalCount
-    FROM INVESTOR I, FINANCIAL_GOAL FG
-    WHERE I.Phone = FG.Phone
-      AND DATEDIFF(YEAR, I.DoB, GETDATE()) BETWEEN 30 AND 40
+    FROM INVESTOR I
+    JOIN FINANCIAL_GOAL FG ON I.Phone = FG.Phone
+    WHERE DATEDIFF(YEAR, I.DoB, GETDATE()) BETWEEN 30 AND 40
     GROUP BY I.Company, FG.Goal
 ),
-RankedGoals AS (
+MaxGoalCounts AS (
     SELECT
         Company,
-        Goal,
-        GoalCount,
-        RANK() OVER (PARTITION BY Company ORDER BY GoalCount DESC) AS Rank
+        MAX(GoalCount) AS MaxGoalCount
     FROM GoalCounts
+    GROUP BY Company
 )
 SELECT
-    Company,
-    Goal,
-    GoalCount
-FROM RankedGoals
-WHERE Rank = 1
-ORDER BY GoalCount DESC;
+    gc.Company,
+    gc.Goal,
+    gc.GoalCount
+FROM GoalCounts gc
+JOIN MaxGoalCounts mgc
+    ON gc.Company = mgc.Company
+    AND gc.GoalCount = mgc.MaxGoalCount
+ORDER BY gc.Company, gc.GoalCount DESC;
+
 
 
