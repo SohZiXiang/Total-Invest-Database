@@ -22,10 +22,15 @@ ENV MSSQL_SA_PASSWORD=password1234!
 # Expose the default SQL Server port
 EXPOSE 1433
 
+
 # Make the initialization script executable
 RUN chmod +x /usr/src/init.sh
 
 # Create log directory
 RUN mkdir -p /tmp
 
-CMD /usr/src/init.sh > /tmp/init.log 2>&1 
+# Convert Windows Script into Unix
+RUN sed -i -e 's/\r$//' /usr/src/init.sh
+
+# Run SQL Server
+CMD /usr/src/init.sh > /tmp/init.log 2>&1
