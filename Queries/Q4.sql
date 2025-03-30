@@ -2,7 +2,7 @@ SELECT TOP 3
     FG.Goal,
     COUNT(*) as GoalCount
 FROM FINANCIAL_GOAL FG, INVESTOR I
-WHERE FG.Phone = I.Phone AND
-      YEAR(i.DoB) = 2024
+WHERE FG.Phone = I.Phone
+  AND YEAR(FG.CreatedDate) = 2024
 GROUP BY FG.Goal
 ORDER BY GoalCount DESC;
