@@ -7,9 +7,9 @@ WITH GoalCounts AS (
         I.Company,
         FG.Goal,
         COUNT(DISTINCT FG.Phone) AS GoalCount
-    FROM INVESTOR I
-    JOIN FINANCIAL_GOAL FG ON I.Phone = FG.Phone
-    WHERE DATEDIFF(YEAR, I.DoB, GETDATE()) BETWEEN 30 AND 40
+    FROM INVESTOR I, FINANCIAL_GOAL FG
+    WHERE I.Phone = FG.Phone
+      AND DATEDIFF(YEAR, I.DoB, GETDATE()) BETWEEN 30 AND 40
     GROUP BY I.Company, FG.Goal
 )
 SELECT
