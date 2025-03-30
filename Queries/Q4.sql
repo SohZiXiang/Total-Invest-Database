@@ -2,13 +2,16 @@
     Question 4: What is the top three most popular first financial goals for investors in 2024?
  */
 
+DECLARE @Year int;
+SET @Year = 2024;
+
 WITH FirstGoal AS (
     SELECT
         FG.Phone,
         FG.Goal,
         RANK() OVER (PARTITION BY FG.Phone ORDER BY FG.CreatedDateTime) as Rank
     FROM FINANCIAL_GOAL FG
-    WHERE YEAR(FG.CreatedDateTime) = 2024
+    WHERE YEAR(FG.CreatedDateTime) = @Year
 )
 SELECT FG.Goal, COUNT(*) AS InvestorCount
 FROM FirstGoal FG
