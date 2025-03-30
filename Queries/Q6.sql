@@ -3,12 +3,12 @@
  */
 
 WITH FinancialGoalForEachCompany AS (
-                SELECT DISTINCT I.Company, Goal, COUNT(*) OVER ( PARTITION BY Goal ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS GoalCounts
+                SELECT DISTINCT Company, Goal, COUNT(*) OVER ( PARTITION BY Company, Goal) AS GoalCounts
                  FROM INVESTOR I, FINANCIAL_GOAL FG
-                 WHERE I.Phone = FG.Phone
-                 AND DATEDIFF(YEAR, I.DoB, GETDATE()) BETWEEN 30 AND 40
+                     WHERE I.Phone = FG.Phone
+                     AND DATEDIFF(YEAR, I.DoB, GETDATE()) BETWEEN 30 AND 40
 )
-SELECT Company, Goal, GoalCounts
+SELECT DISTINCT Company, Goal, GoalCounts
 FROM (
     SELECT *,
            RANK() OVER (PARTITION BY Company ORDER BY GoalCounts DESC) AS rk
