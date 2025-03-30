@@ -1,3 +1,7 @@
+/*
+    Question 6: Find the most popular financial goals for investors working in the same company and whose age is between 30 to 40 years old.
+ */
+
 SELECT
     I.Company,
     FG.Goal,

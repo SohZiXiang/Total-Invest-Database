@@ -2,10 +2,15 @@
     Question 3: Find the monthly average unrealized gain/loss of portfolios for each month in 2024.
  */
 
+DECLARE @Year int;
+SET @Year = 2024;
+
 SELECT
-    FORMAT(Date, 'yyyy-MMM') AS month,
+    YEAR(Date) AS YEAR,
+    FORMAT(Date, 'MMM') as MONTH,
     AVG(Amount) AS avg_unrealized_gain_loss
 FROM UNREALIZED_GAIN_LOSS
-WHERE Date BETWEEN '2024-01-01' AND '2024-12-31'
-GROUP BY FORMAT(Date, 'yyyy-MMM')
-ORDER BY month;
+WHERE YEAR(Date) = @Year
+GROUP BY YEAR(DATE), MONTH(DATE), FORMAT(Date, 'MMM')
+ORDER BY MONTH(DATE);
+

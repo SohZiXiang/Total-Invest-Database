@@ -1,3 +1,7 @@
+/*
+    Question 7: Are male investors in their 20s making more money from their investments than their female counterparts in 2024?
+ */
+
 SELECT
     I.Gender,
     AVG(pr.AnnualizedReturn) as AvgReturn,
