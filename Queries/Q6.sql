@@ -11,11 +11,21 @@ WITH GoalCounts AS (
     WHERE I.Phone = FG.Phone
       AND DATEDIFF(YEAR, I.DoB, GETDATE()) BETWEEN 30 AND 40
     GROUP BY I.Company, FG.Goal
+),
+RankedGoals AS (
+    SELECT
+        Company,
+        Goal,
+        GoalCount,
+        RANK() OVER (PARTITION BY Company ORDER BY GoalCount DESC) AS Rank
+    FROM GoalCounts
 )
 SELECT
     Company,
-    MAX(GoalCount) AS MaxGoalCount
-FROM GoalCounts
-GROUP BY Company
-ORDER BY MaxGoalCount DESC;
+    Goal,
+    GoalCount
+FROM RankedGoals
+WHERE Rank = 1
+ORDER BY GoalCount DESC;
+
 
