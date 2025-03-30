@@ -6,7 +6,7 @@ WITH FirstGoal AS (
     SELECT
         FG.Phone,
         FG.Goal,
-        RANK() OVER (PARTITION BY FG.Phone ORDER BY FG.CreatedDate) as Rank
+        RANK() OVER (PARTITION BY FG.Phone ORDER BY FG.CreatedDateTime) as Rank
     FROM FINANCIAL_GOAL FG
 )
 
