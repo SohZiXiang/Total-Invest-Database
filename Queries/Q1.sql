@@ -1,3 +1,11 @@
+/*
+    Question 1: Find investors who are making on average a loss across all their portfolios in 2024.
+
+    We join the INVESTOR, PORTFOLIO and PORTFOLIO_RETURNS tables to get all the portfolio which belongs to each investor
+    group all the Investor's Portfolios and calculate the average AnnualizedReturn of all the portfolios that belong to one investor and if it falls belong 0 we take it as a loss
+
+*/
+
 DECLARE @Year int;
 SET @Year = 2024;
 
@@ -10,5 +18,3 @@ WHERE I.Phone = P.Phone AND
 GROUP BY I.Phone, I.Name
 HAVING AVG(pr.AnnualizedReturn) < 0;
 
--- We join the INVESTOR, PORTFOLIO and PORTFOLIO_RETURNS tables to get all the portfolio which belongs to each investor
--- then group all the Investor's Portfolios and calculate the average AnnualizedReturn of all the portfolios that belong to one investor and if it falls belong 0 we take it as a loss

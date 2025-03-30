@@ -1,5 +1,9 @@
 
 -- Get all the Monthly TopUps for 2024, at the beginning of the month
+/*
+    Question 5: Find investors who consistently top up their investment at the beginning of every month (dollar-cost averaging) in 2024 for at least one of their portfolios.
+ */
+
 WITH MonthlyTopUps AS (
     SELECT
         I.Phone,
@@ -15,5 +19,5 @@ WITH MonthlyTopUps AS (
     GROUP BY I.Phone, I.Name
 )
 SELECT Phone, Name, TopUpMonths
-FROM MonthlyTopUps
+FROM INVESTED_VALUE
 WHERE TopUpMonths = 12;  -- Must have topped up every month

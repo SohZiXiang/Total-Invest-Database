@@ -53,6 +53,7 @@ create table FINANCIAL_GOAL
     Goal     nvarchar(100) not null,
     Amount   decimal(15, 2),
     Timeline int,
+    CreatedDate date,
     primary key (Phone, Goal)
 )
 go
