@@ -1,8 +1,8 @@
 SELECT TOP 3
-    fg.Goal,
+    FG.Goal,
     COUNT(*) as GoalCount
-FROM FINANCIAL_GOAL fg
-JOIN INVESTOR i ON fg.Phone = i.Phone
-WHERE YEAR(i.DoB) = 2024
-GROUP BY fg.Goal
+FROM FINANCIAL_GOAL FG, INVESTOR I
+WHERE FG.Phone = I.Phone AND
+      YEAR(i.DoB) = 2024
+GROUP BY FG.Goal
 ORDER BY GoalCount DESC;

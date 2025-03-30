@@ -20,3 +20,4 @@ INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-03
 INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-01-15', 6, N'TopUp', 0.00);
 INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-02-15', 7, N'TopUp', 0.00);
 INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-03-15', 8, N'TopUp', 0.00);
+INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-03-03', 8, N'TopUp', 0.00);
