@@ -23,5 +23,5 @@ WITH MonthlyTopUps AS (
     GROUP BY I.Phone, I.Name
 )
 SELECT Phone, Name, TopUpMonths
-FROM INVESTED_VALUE
+FROM MonthlyTopUps
 WHERE TopUpMonths = 12;  -- Must have topped up every month
