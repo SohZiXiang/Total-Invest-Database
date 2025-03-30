@@ -21,3 +21,18 @@ INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-01
 INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-02-15', 7, N'TopUp', 0.00);
 INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-03-15', 8, N'TopUp', 0.00);
 INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-03-03', 8, N'TopUp', 0.00);
+
+-- Test Q5
+INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-01-01', 2, N'TopUp', 0.00);
+INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-02-01', 2, N'TopUp', 0.00);
+INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-03-02', 2, N'TopUp', 0.00);
+INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-04-01', 2, N'TopUp', 0.00);
+INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-05-01', 2, N'TopUp', 0.00);
+INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-06-01', 2, N'TopUp', 0.00);
+INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-07-01', 2, N'TopUp', 0.00);
+INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-08-01', 2, N'TopUp', 0.00);
+INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-09-01', 2, N'TopUp', 0.00);
+INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-10-01', 2, N'TopUp', 0.00);
+INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-11-01', 2, N'TopUp', 0.00);
+INSERT INTO master.dbo.STOCK_TRANSACTION (Date, ID, Type, Fee) VALUES (N'2024-12-01', 2, N'TopUp', 0.00);
+

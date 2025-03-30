@@ -24,4 +24,4 @@ WITH MonthlyTopUps AS (
 )
 SELECT Phone, Name, TopUpMonths
 FROM MonthlyTopUps
-WHERE TopUpMonths = 12;  -- Must have topped up every month
+WHERE TopUpMonths >= 6;  -- Must have topped up at least half a year
