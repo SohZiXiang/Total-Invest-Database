@@ -36,7 +36,7 @@ INSERT INTO master.dbo.FINANCIAL_GOAL (Phone, Goal, Amount, Timeline, CreatedDat
 
 -- 2023 Financial Goals
 (N'+65-8123-4560', N'Wedding Fund', 800000.00, 5, '2023-02-15 09:00:00'),
-(N'+65-9123-4561', N'Start Business', 1800000.00, 20, '2023-05-20 09:45:00'),
+(N'+65-9123-4561', N'Buy House', 1800000.00, 20, '2023-05-20 09:45:00'),
 (N'+65-8234-5672', N'Children''s Education', 350000.00, 3, '2023-08-10 10:30:00'),
 (N'+65-9234-5673', N'Start Business', 450000.00, 10, '2023-11-05 11:15:00'),
 (N'+65-8345-6784', N'Buy House', 125000.00, 2, '2023-12-20 12:00:00'),
