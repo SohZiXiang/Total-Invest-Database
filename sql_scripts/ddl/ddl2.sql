@@ -262,14 +262,14 @@ SELECT
             WHERE ugl.PID = p.PID
               AND ugl.Date = (SELECT MAX(Date) -- Get most recent ugl
                               FROM dbo.UNREALIZED_GAIN_LOSS
-                              WHERE PID = p.PID)), 0) AS MarketValue, -- default 0
-    p.Fee
+                              WHERE PID = p.PID)), 0) AS MarketValue -- default 0
 FROM dbo.PORTFOLIO p;
 go
 
 -- Annualized Return (%) = (Total Gains/Losses / Total Invested Value) * (100 / Years Since Inception)
 CREATE VIEW PortfolioAnnualizedReturn AS
 SELECT
+    p.Phone,
     pr.InceptionDate,
     pr.MarketValue,
     CASE -- add logic
@@ -300,5 +300,8 @@ SELECT
             )
         ELSE 0 -- If less than a year since inception, return 0
         END AS AnnualizedReturn
-FROM dbo.PORTFOLIO_RETURNS pr;
+FROM dbo.PORTFOLIO_RETURNS pr
+JOIN dbo.PORTFOLIO p -- Join to link Phone from portfolio
+ON pr.InceptionDate = p.InceptionDate
+AND pr.MarketValue = p.MarketValue; -- Ensure the link matches based
 GO
