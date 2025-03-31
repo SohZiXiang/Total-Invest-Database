@@ -3,7 +3,6 @@
 
     We join the INVESTOR, PORTFOLIO and PORTFOLIO_RETURNS tables to get all the portfolio which belongs to each investor
     group all the Investor's Portfolios and calculate the average AnnualizedReturn of all the portfolios that belong to one investor and if it falls belong 0 we take it as a loss
-
 */
 
 DECLARE @Year int;
