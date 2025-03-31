@@ -8,15 +8,15 @@ SET @Year = 2024;
 
 SELECT
     @Year AS Year,
-    i.Gender,
+    I.Gender,
     SUM(pr.AnnualizedReturn) AS TotalReturn,
-    COUNT(DISTINCT i.Phone) AS InvestorCount
-FROM INVESTOR i
-JOIN PORTFOLIO p ON i.Phone = p.Phone
-JOIN PORTFOLIO_RETURNS pr ON p.InceptionDate = pr.InceptionDate
-WHERE YEAR(pr.InceptionDate) = @Year
-AND DATEDIFF(YEAR, i.DoB, GETDATE()) BETWEEN 20 AND 29
-GROUP BY i.Gender;
+    COUNT(DISTINCT I.Phone) AS InvestorCount
+FROM INVESTOR I, PORTFOLIO P, PORTFOLIO_RETURNS PR
+WHERE I.Phone = P.Phone
+AND P.InceptionDate = PR.InceptionDate
+AND YEAR(PR.InceptionDate) = @Year
+AND DATEDIFF(YEAR, I.DoB, GETDATE()) BETWEEN 20 AND 29
+GROUP BY I.Gender;
 
 
 
