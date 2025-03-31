@@ -7,7 +7,7 @@
 sleep 30
 
 # Execute SQL scripts
-for file in /usr/src/sql_scripts/ddl/*.sql; do
+for file in /usr/src/sql_scripts/ddl/ddl2.sql; do
     echo "Executing $file..."
     /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P password1234! -C -i "$file" 2>&1 | tee -a /tmp/sql.log
 done
