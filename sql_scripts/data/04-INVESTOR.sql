@@ -1,21 +1,12 @@
 INSERT INTO master.dbo.INVESTOR (Phone, Email, Name, Gender, DoB, AnnualIncome, Company) VALUES (N'+65-9111-2222', N'john@totalinvest.com', N'John Smith', N'M', N'1980-05-15', 85000.00, N'Tech Inc.');
 INSERT INTO master.dbo.INVESTOR (Phone, Email, Name, Gender, DoB, AnnualIncome, Company) VALUES (N'+65-9222-3333', N'sarah@totalinvest.com', N'Sarah Lee', N'F', N'1990-08-20', 95000.00, N'Finance Corp.');
 
--- 2024 Investor Data (Updated with more investors in their 20s)
-INSERT INTO master.dbo.INVESTOR (Phone, Email, Name, Gender, DoB, AnnualIncome, Company) VALUES
--- Male investors in their 20s
-(N'+65-9123-4567', N'john.smith@techsolutions.com', N'John Smith', N'M', N'2000-03-15', 85000.00, N'Tech Solutions Pte Ltd'),
-(N'+65-8234-5678', N'michael.chen@financecorp.com', N'Michael Chen', N'M', N'1999-07-22', 92000.00, N'Finance Corp Pte Ltd'),
-(N'+65-7345-6789', N'david.lee@investmentbank.com', N'David Lee', N'M', N'2001-01-10', 88000.00, N'Investment Bank Pte Ltd'),
-(N'+65-6456-7890', N'james.wilson@techsolutions.com', N'James Wilson', N'M', N'1998-11-30', 95000.00, N'Tech Solutions Pte Ltd'),
-(N'+65-5567-8901', N'robert.tan@financecorp.com', N'Robert Tan', N'M', N'2002-05-18', 82000.00, N'Finance Corp Pte Ltd'),
-
--- Female investors in their 20s
-(N'+65-4678-9012', N'sarah.johnson@techsolutions.com', N'Sarah Johnson', N'F', N'2000-08-25', 78000.00, N'Tech Solutions Pte Ltd'),
-(N'+65-3789-0123', N'emily.wong@financecorp.com', N'Emily Wong', N'F', N'1999-12-05', 85000.00, N'Finance Corp Pte Ltd'),
-(N'+65-2890-1234', N'lisa.chen@investmentbank.com', N'Lisa Chen', N'F', N'2001-04-15', 92000.00, N'Investment Bank Pte Ltd'),
-(N'+65-1901-2345', N'michelle.lee@techsolutions.com', N'Michelle Lee', N'F', N'1998-09-20', 88000.00, N'Tech Solutions Pte Ltd'),
-(N'+65-9012-3456', N'jessica.tan@financecorp.com', N'Jessica Tan', N'F', N'2002-02-28', 82000.00, N'Finance Corp Pte Ltd');
+-- 2024 Investor Data
+INSERT INTO master.dbo.INVESTOR (Phone, Email, Name, Gender, DoB, AnnualIncome, Company) VALUES (N'+65-9123-4567', N'alex.tan@email.com', N'Alex Tan', N'M', N'1995-03-15', 85000.00, N'Tech Solutions Pte Ltd');
+INSERT INTO master.dbo.INVESTOR (Phone, Email, Name, Gender, DoB, AnnualIncome, Company) VALUES (N'+65-8234-5678', N'sarah.wong@email.com', N'Sarah Wong', N'F', N'1998-07-22', 78000.00, N'Finance Corp Pte Ltd');
+INSERT INTO master.dbo.INVESTOR (Phone, Email, Name, Gender, DoB, AnnualIncome, Company) VALUES (N'+65-7345-6789', N'david.lee@email.com', N'David Lee', N'M', N'1992-11-30', 92000.00, N'Tech Solutions Pte Ltd');
+INSERT INTO master.dbo.INVESTOR (Phone, Email, Name, Gender, DoB, AnnualIncome, Company) VALUES (N'+65-6456-7890', N'emma.ng@email.com', N'Emma Ng', N'F', N'1997-04-18', 75000.00, N'Finance Corp Pte Ltd');
+INSERT INTO master.dbo.INVESTOR (Phone, Email, Name, Gender, DoB, AnnualIncome, Company) VALUES (N'+65-5567-8901', N'james.chan@email.com', N'James Chan', N'M', N'1993-09-25', 88000.00, N'Investment Bank Pte Ltd');
 
 -- Additional 30 Investors (2021-2024)
 INSERT INTO master.dbo.INVESTOR (Phone, Email, Name, Gender, DoB, AnnualIncome, Company) VALUES
