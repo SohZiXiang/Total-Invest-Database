@@ -1,12 +1,21 @@
 INSERT INTO master.dbo.PORTFOLIO_RETURNS (InceptionDate, MarketValue, AnnualizedReturn) VALUES (N'2023-01-01', 50000.00, 7.25);
 INSERT INTO master.dbo.PORTFOLIO_RETURNS (InceptionDate, MarketValue, AnnualizedReturn) VALUES (N'2023-02-15', 75000.00, 5.20);
 
--- 2024 Portfolio Returns Data
-INSERT INTO master.dbo.PORTFOLIO_RETURNS (InceptionDate, MarketValue, AnnualizedReturn) VALUES (N'2024-01-01', 100000.00, -2.5);
-INSERT INTO master.dbo.PORTFOLIO_RETURNS (InceptionDate, MarketValue, AnnualizedReturn) VALUES (N'2024-01-15', 150000.00, 12.5);
-INSERT INTO master.dbo.PORTFOLIO_RETURNS (InceptionDate, MarketValue, AnnualizedReturn) VALUES (N'2024-02-01', 200000.00, 8.75);
-INSERT INTO master.dbo.PORTFOLIO_RETURNS (InceptionDate, MarketValue, AnnualizedReturn) VALUES (N'2024-02-15', 175000.00, -5.25);
-INSERT INTO master.dbo.PORTFOLIO_RETURNS (InceptionDate, MarketValue, AnnualizedReturn) VALUES (N'2024-03-01', 250000.00, 15.30);
+-- 2024 Portfolio Returns Data (Updated for investors in their 20s)
+INSERT INTO master.dbo.PORTFOLIO_RETURNS (InceptionDate, MarketValue, AnnualizedReturn) VALUES
+-- Male investors' returns (generally higher returns)
+(N'2024-01-05', 100000.00, 15.50),
+(N'2024-01-10', 150000.00, 18.75),
+(N'2024-01-15', 200000.00, 22.30),
+(N'2024-01-20', 175000.00, 16.80),
+(N'2024-01-25', 250000.00, 20.45),
+
+-- Female investors' returns (generally lower returns)
+(N'2024-02-01', 120000.00, 12.30),
+(N'2024-02-05', 180000.00, 14.20),
+(N'2024-02-10', 220000.00, 16.50),
+(N'2024-02-15', 160000.00, 11.80),
+(N'2024-02-20', 280000.00, 13.90);
 
 -- Additional 30 Portfolio Returns (2021-2024)
 INSERT INTO master.dbo.PORTFOLIO_RETURNS (InceptionDate, MarketValue, AnnualizedReturn) VALUES
