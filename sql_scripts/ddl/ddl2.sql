@@ -87,7 +87,7 @@ create table dbo.PORTFOLIO
     InceptionDate date           default getdate() not null,
     MarketValue   decimal(15, 2) default 0.00
         check ([MarketValue] >= 0),
-    Fee           decimal(5, 2)  default 0.00
+    Fee           decimal(5, 2)  default 0.88
         check ([Fee] >= 0),
     primary key (PID, Phone),
     constraint PORTFOLIO___fk___RETURNS
@@ -121,7 +121,7 @@ create table dbo.BOND_TRANSACTION
             on delete cascade,
     Type varchar(10)    not null
         check ([Type] = 'Withdrawal' OR [Type] = 'TopUp' OR [Type] = 'Sell' OR [Type] = 'Buy'),
-    Fee  decimal(10, 2) not null
+    Fee  decimal(10, 2) not null default 0.20
         check ([Fee] >= 0),
     primary key (ID, Date)
 )
@@ -153,7 +153,7 @@ create table dbo.FUND_TRANSACTION
         references dbo.FUND_IN_PORTFOLIO,
     Type varchar(10)    not null
         check ([Type] = 'Withdrawal' OR [Type] = 'TopUp' OR [Type] = 'Sell' OR [Type] = 'Buy'),
-    Fee  decimal(10, 2) not null
+    Fee  decimal(10, 2) not null default 0.20
         check ([Fee] >= 0),
     primary key (ID, Date)
 )
@@ -227,7 +227,7 @@ create table dbo.STOCK_TRANSACTION
     Type varchar(10)    not null
         constraint CK__STOCK_TRANS__Type_check
             check ([Type] = 'Withdrawal' OR [Type] = 'TopUp' OR [Type] = 'Sell' OR [Type] = 'Buy'),
-    Fee  decimal(10, 2) not null
+    Fee  decimal(10, 2) not null default 0.20
         constraint CK__STOCK_TRANS__Fee_check
             check ([Fee] >= 0),
     constraint STOCK_TRANSACTION_pk
