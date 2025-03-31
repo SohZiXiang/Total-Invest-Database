@@ -247,3 +247,58 @@ create table dbo.UNREALIZED_GAIN_LOSS
 )
 go
 
+-- MarketValue = Total Invested Value + Latest Unrealized Gain/Loss
+CREATE VIEW PortfolioMarketValue AS
+SELECT
+    p.PID,
+    p.Phone,
+    p.InceptionDate,
+    ISNULL((SELECT SUM(iv.Amount) -- Total invested value
+            FROM dbo.INVESTED_VALUE iv
+            WHERE iv.PID = p.PID), 0)
+        + -- addition
+    ISNULL((SELECT Amount -- Latest unrealized gain/loss
+            FROM dbo.UNREALIZED_GAIN_LOSS ugl
+            WHERE ugl.PID = p.PID
+              AND ugl.Date = (SELECT MAX(Date) -- Get most recent ugl
+                              FROM dbo.UNREALIZED_GAIN_LOSS
+                              WHERE PID = p.PID)), 0) AS MarketValue, -- default 0
+    p.Fee
+FROM dbo.PORTFOLIO p;
+go
+
+-- Annualized Return (%) = (Total Gains/Losses / Total Invested Value) * (100 / Years Since Inception)
+CREATE VIEW PortfolioAnnualizedReturn AS
+SELECT
+    pr.InceptionDate,
+    pr.MarketValue,
+    CASE -- add logic
+        WHEN DATEDIFF(YEAR, pr.InceptionDate, GETDATE()) > 0 THEN -- Check if at least a year has passed
+            ISNULL(
+                    (ISNULL((SELECT SUM(ugl.Amount) -- Total unrealized gains/losses
+                             FROM dbo.UNREALIZED_GAIN_LOSS ugl
+                             WHERE EXISTS ( -- Match portfolio PID, InceptionDate, and MarketValue
+                                 SELECT 1
+                                 FROM dbo.PORTFOLIO p
+                                 WHERE p.PID = ugl.PID
+                                   AND p.InceptionDate = pr.InceptionDate
+                                   AND p.MarketValue = pr.MarketValue
+                             )), 0)  -- default 0
+                        / -- division of Total invested Value
+                     NULLIF((SELECT SUM(iv.Amount) --NULLIF to prevent div 0 error
+                             FROM dbo.INVESTED_VALUE iv
+                             WHERE EXISTS ( -- Match portfolio PID, InceptionDate, and MarketValue
+                                 SELECT 1
+                                 FROM dbo.PORTFOLIO p
+                                 WHERE p.PID = iv.PID
+                                   AND p.InceptionDate = pr.InceptionDate
+                                   AND p.MarketValue = pr.MarketValue
+                             )), 0)) * 100
+                        / -- division of years since Inception
+                    DATEDIFF(YEAR, pr.InceptionDate, GETDATE()), -- normalize by years
+                    0 -- Fallback value when the entire calculation returns NULL
+            )
+        ELSE 0 -- If less than a year since inception, return 0
+        END AS AnnualizedReturn
+FROM dbo.PORTFOLIO_RETURNS pr;
+GO
