@@ -13,7 +13,7 @@ WITH FirstGoal AS (
     FROM FINANCIAL_GOAL FG
     WHERE YEAR(FG.CreatedDateTime) = @Year
 )
-SELECT FG.Goal, COUNT(*) AS InvestorCount
+SELECT TOP 3 FG.Goal, COUNT(*) AS InvestorCount
 FROM FirstGoal FG
  WHERE FG.Rank = 1
 GROUP BY FG.Goal
