@@ -2,7 +2,7 @@ INSERT INTO master.dbo.FINANCIAL_GOAL (Phone, Goal, Amount, Timeline, CreatedDat
 INSERT INTO master.dbo.FINANCIAL_GOAL (Phone, Goal, Amount, Timeline, CreatedDateTime) VALUES (N'+65-9111-2222', N'Retirement', 1000000.00, 20, '2024-10-24 14:30:00');
 
 -- 2024 Financial Goals Data
-INSERT INTO master.dbo.FINANCIAL_GOAL (Phone, Goal, Amount, Timeline, CreatedDateTime) VALUES (N'+65-9123-4567', N'Buy Condo', 800000.00, 5, '2024-02-15 10:45:00');
+INSERT INTO master.dbo.FINANCIAL_GOAL (Phone, Goal, Amount, Timeline, CreatedDateTime) VALUES (N'+65-9123-4567', N'Buy House', 800000.00, 5, '2024-02-15 10:45:00');
 INSERT INTO master.dbo.FINANCIAL_GOAL (Phone, Goal, Amount, Timeline, CreatedDateTime) VALUES (N'+65-8234-5678', N'Early Retirement', 2000000.00, 15, '2024-01-01 11:20:00');
 INSERT INTO master.dbo.FINANCIAL_GOAL (Phone, Goal, Amount, Timeline, CreatedDateTime) VALUES (N'+65-7345-6789', N'Start Business', 500000.00, 3, '2024-04-01 13:15:00');
 INSERT INTO master.dbo.FINANCIAL_GOAL (Phone, Goal, Amount, Timeline, CreatedDateTime) VALUES (N'+65-6456-7890', N'Buy Car', 150000.00, 2, '2024-05-13 15:30:00');
