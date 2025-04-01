@@ -248,7 +248,7 @@ create table dbo.UNREALIZED_GAIN_LOSS
 go
 
 -- MarketValue = Total Invested Value + Latest Unrealized Gain/Loss
-CREATE VIEW PortfolioMarketValue AS
+CREATE VIEW PORTFOLIO_MARKET_VALUE AS
 SELECT
     p.PID,
     p.Phone,
@@ -267,7 +267,7 @@ FROM dbo.PORTFOLIO p;
 go
 
 -- Annualized Return (%) = (Total Gains/Losses / Total Invested Value) * (100 / Years Since Inception)
-CREATE VIEW PortfolioAnnualizedReturn AS
+CREATE VIEW PORTFOLIO_ANNUALIZED_RETURN AS
 SELECT
     p.Phone,
     pr.InceptionDate,
@@ -305,3 +305,16 @@ JOIN dbo.PORTFOLIO p -- Join to link Phone from portfolio
 ON pr.InceptionDate = p.InceptionDate
 AND pr.MarketValue = p.MarketValue; -- Ensure the link matches based
 GO
+
+-- FeeAmount = FeeRate * (ManagementFeePercentage/100)
+CREATE VIEW PORTFOLIO_FEE AS
+SELECT
+    PID,
+    Phone,
+    MarketValue,
+    Fee AS FeeRate,
+    (MarketValue * (Fee / 100)) AS FeeAmount
+FROM PORTFOLIO
+go
+
+
