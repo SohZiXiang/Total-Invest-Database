@@ -120,7 +120,7 @@ create table dbo.BOND_TRANSACTION
         references dbo.BOND_IN_PORTFOLIO
             on delete cascade,
     Type varchar(10)    not null
-        check ([Type] = 'Withdrawal' OR [Type] = 'TopUp' OR [Type] = 'Sell' OR [Type] = 'Buy'),
+        check ([Type] = 'Withdraw' OR [Type] = 'Rebalance' OR [Type] = 'TopUp' OR [Type] = 'Sell' OR [Type] = 'Buy'),
     Fee  decimal(10, 2) not null default 0.20
         check ([Fee] >= 0),
     primary key (ID, Date)
@@ -152,7 +152,7 @@ create table dbo.FUND_TRANSACTION
     ID   int            not null
         references dbo.FUND_IN_PORTFOLIO,
     Type varchar(10)    not null
-        check ([Type] = 'Withdrawal' OR [Type] = 'TopUp' OR [Type] = 'Sell' OR [Type] = 'Buy'),
+        check ([Type] = 'Withdrawal' OR [Type] = 'Rebalance' OR [Type] = 'TopUp' OR [Type] = 'Sell' OR [Type] = 'Buy'),
     Fee  decimal(10, 2) not null default 0.20
         check ([Fee] >= 0),
     primary key (ID, Date)
@@ -226,7 +226,7 @@ create table dbo.STOCK_TRANSACTION
             on delete cascade,
     Type varchar(10)    not null
         constraint CK__STOCK_TRANS__Type_check
-            check ([Type] = 'Withdrawal' OR [Type] = 'TopUp' OR [Type] = 'Sell' OR [Type] = 'Buy'),
+            check ([Type] = 'Withdrawal' OR [Type] = 'Rebalance' OR [Type] = 'TopUp' OR [Type] = 'Sell' OR [Type] = 'Buy'),
     Fee  decimal(10, 2) not null default 0.20
         constraint CK__STOCK_TRANS__Fee_check
             check ([Fee] >= 0),
