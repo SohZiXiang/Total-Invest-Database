@@ -272,7 +272,7 @@ SELECT
     p.Phone,
     pr.InceptionDate,
     pr.MarketValue,
-    CASE -- add logic
+    CASE -- conditional logic with WHEN (if-else statement)
         WHEN DATEDIFF(YEAR, pr.InceptionDate, GETDATE()) > 0 THEN -- Check if at least a year has passed
             ISNULL(
                     (ISNULL((SELECT SUM(ugl.Amount) -- Total unrealized gains/losses
@@ -302,19 +302,22 @@ SELECT
         END AS AnnualizedReturn
 FROM dbo.PORTFOLIO_RETURNS pr
 JOIN dbo.PORTFOLIO p -- Join to link Phone from portfolio
-ON pr.InceptionDate = p.InceptionDate
+ON pr.InceptionDate = p.InceptionDate --Creates Pairs:looks for matching rows
 AND pr.MarketValue = p.MarketValue; -- Ensure the link matches based
 GO
 
--- FeeAmount = FeeRate * (ManagementFeePercentage/100)
-CREATE VIEW PORTFOLIO_FEE AS
+CREATE VIEW dbo.PORTFOLIO_MANAGEMENT_FEES AS
 SELECT
-    PID,
-    Phone,
-    MarketValue,
-    Fee AS FeeRate,
-    (MarketValue * (Fee / 100)) AS FeeAmount
-FROM PORTFOLIO
-go
+    p.PID,
+    p.Phone,
+    SUM(iv.Amount) AS TotalInvestedValue,
+    p.Fee AS ManagementFeeRate,
+    SUM(iv.Amount) * (p.Fee / 100) AS AnnualManagementFee
+FROM
+    dbo.PORTFOLIO p
+        JOIN
+    dbo.INVESTED_VALUE iv ON p.PID = iv.PID AND p.Phone = iv.Phone --Creates Pairs:looks for matching rows
+GROUP BY
+    p.PID, p.Phone, p.Fee;
 
 
