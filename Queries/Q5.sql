@@ -8,20 +8,34 @@ DECLARE @Year INT, @Type VARCHAR(10);
 SET @Year = 2024;
 SET @Type = 'TopUp';
 
-WITH MonthlyTopUps AS (
+WITH Transactions AS (
+    SELECT * FROM STOCK_TRANSACTION
+             UNION
+    SELECT * FROM BOND_TRANSACTION
+             UNION
+    SELECT * FROM FUND_TRANSACTION),
+ Asset_In_PortFolio AS (
+    SELECT * FROM STOCK_IN_PORTFOLIO
+             UNION
+    SELECT * FROM BOND_IN_PORTFOLIO
+             UNION
+    SELECT * FROM FUND_IN_PORTFOLIO
+ ),
+  MonthlyTopUps AS (
     SELECT
         I.Phone,
         I.Name,
-        COUNT(DISTINCT MONTH(st.Date)) as TopUpMonths
-    FROM INVESTOR I, PORTFOLIO P, STOCK_IN_PORTFOLIO SIP, STOCK_TRANSACTION ST
+        COUNT(DISTINCT MONTH(T.Date)) as TopUpMonths
+    FROM INVESTOR I,PORTFOLIO P, Asset_In_PortFolio AIP,Transactions T
     WHERE I.Phone = P.Phone
-      AND P.PID = SIP.PID AND P.Phone = SIP.Phone
-      AND SIP.ID = ST.ID
-      AND YEAR(ST.Date) = @Year
-      AND ST.Type = @Type
-      AND DAY(ST.Date) <= 5  -- Assuming beginning of month is first 5 days
+      AND P.PID = AIP.PID
+      AND P.Phone = AIP.Phone
+      AND AIP.ID = T.ID
+      AND YEAR(T.Date) = @Year
+      AND T.Type = @Type
+      AND DAY(T.Date) <= 5  -- Assuming beginning of month is first 5 days
     GROUP BY I.Phone, I.Name
 )
 SELECT Phone, Name, TopUpMonths
 FROM MonthlyTopUps
-WHERE TopUpMonths >= 6;  -- Must have topped up consistently at least half a year
+WHERE TopUpMonths >= 6;  -- Must have topped up at least half a year
