@@ -181,5 +181,5 @@ The database schema includes the following relations:
   - ID, Date → Type, Fee
 - **Normal Form:** 3NF
 
-Developed as part of my database systems project at **NTU]**
-Developed as part of my database systems project at **[Your Institution/Organization]**.
+Developed as part of my database systems project at **NTU**
+
