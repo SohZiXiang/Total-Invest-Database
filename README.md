@@ -1,7 +1,15 @@
 # TotalInvest Database Project
 
 ## Overview
-This repository contains the database design and implementation for **TotalInvest**
+This repository contains the database design and implementation for **TotalInvest**, a project developed as part of my university lab for **SC2207: Introduction to Databases**. The aim of this project is to demonstrate key database concepts including normalization, relational schema design, and query optimization in the context of a financial portfolio management system.
+
+### My Contributions:
+- **Table Creation:** Designed and implemented relational tables to support the core functionalities of TotalInvest, ensuring all relations comply with **Third Normal Form (3NF)**.
+- **Data Population:** Generated sample data for all relations to test and validate the database structure and functionality.
+- **Calculated Views:** Created additional views to compute calculated values such as portfolio performance metrics and risk assessment summaries, showcasing how derived data can enhance decision-making.
+- **Documentation:** Provided comprehensive functional dependencies, normalization explanations, and a detailed ER diagram to describe the database structure.
+
+This project not only highlights my understanding of database design principles but also illustrates practical skills in implementing and querying relational databases.
 
 ## Features
 - **Investor Management**: Track investor details such as name, contact information, and financial profile.
